@@ -1,24 +1,32 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import RaisedButton from 'material-ui/RaisedButton';
 
 import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-  render() {
-    return (
-      <MuiThemeProvider>
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Adi app</h1>
-          </header>
-          <RaisedButton label="Click Me" />
-        </div>
-      </MuiThemeProvider>
-    );
-  }
+    render() {
+        return (
+            < MuiThemeProvider >
+                <div className="App">
+                    <header className="App-header">
+                        <Link to="/">
+                            <img src={logo} className="App-logo" alt="logo" />
+                        </Link>
+                        <p>
+                            <Link to="/login">Login</Link>
+                            -
+                            <Link to="/register">Register</Link>
+                        </p>                    
+                    </header>
+
+                    {this.props.children}
+
+                </div>
+            </MuiThemeProvider >
+        )
+    }
 }
 
 export default App;

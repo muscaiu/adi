@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 
+import './Register'
+import Header from './Header'
 
 class Register extends Component {
   render() {
     return (
-        <div>Register Page</div>
-    );
+      <div className="Register">
+        <Header />
+        Register Page
+      </div>
+    )
   }
 }
 

@@ -18,10 +18,12 @@ class LoginForm extends Component {
             <div className="extra form-group">
 
                 <Link to="/register">Register</Link>
+                <br />
+                <Link to="/commentbox">Comment Box</Link>
 
                 <div className="extra small">App Version: 1.0</div>
 
-            </div>
+            </div >
         )
     }
 }

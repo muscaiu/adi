@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
 import './Login.css'
+import Header from './Header'
 import LoginForm from './LoginComponents/LoginForm'
 import LoginFooter from './LoginComponents/LoginFooter'
-import Header from './Header'
 
 class Login extends Component {
 

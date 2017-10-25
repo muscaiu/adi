@@ -8,7 +8,6 @@ import CommentForm from './CommentForm';
 // import DATA from '../data';
 import style from './style';
 
-
 class CommentBox extends Component {
     constructor(props) {
         super(props);
@@ -17,10 +16,6 @@ class CommentBox extends Component {
             url: 'http://localhost:3001/api/comments',
             pollInterval: 10000
         }
-        this.loadCommentsFromServer = this.loadCommentsFromServer.bind(this);
-        this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
-        this.handleCommentDelete = this.handleCommentDelete.bind(this);
-        this.handleCommentUpdate = this.handleCommentUpdate.bind(this);
     }
     componentDidMount() {
         this.loadCommentsFromServer();
@@ -44,7 +39,7 @@ class CommentBox extends Component {
         this.setState({ data: newComments })
         //add POST request
         axios.post(this.state.url, comment)
-            .then(res => this.loadCommentsFromServer())
+            .then(res => () => this.loadCommentsFromServer())
             .catch(err => {
                 console.log(err)
             })
@@ -71,11 +66,11 @@ class CommentBox extends Component {
                 <Header />
                 <h2>Comments:</h2>
                 <CommentList
-                    onCommentDelete={this.handleCommentDelete}
-                    onCommentUpdate={this.handleCommentUpdate}
+                    onCommentDelete={() => this.handleCommentDelete}
+                    onCommentUpdate={() => this.handleCommentUpdate}
                     data={this.state.data}
                 />
-                <CommentForm onCommentSubmit={this.handleCommentSubmit} />
+                <CommentForm onCommentSubmit={() => this.handleCommentSubmit} />
             </div>
         )
     }

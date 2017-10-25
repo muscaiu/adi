@@ -15,7 +15,7 @@ class CommentBox extends Component {
         this.state = {
             data: [],
             url: 'http://localhost:3001/api/comments',
-            pollInterval: 6000
+            pollInterval: 10000
         }
         this.loadCommentsFromServer = this.loadCommentsFromServer.bind(this);
         this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
@@ -36,7 +36,16 @@ class CommentBox extends Component {
         //     })
     }
     handleCommentSubmit(comment) {
+        let comments = this.state.data
+        comment._id = Date.now()
+        let newComments = comments.concat([comment])
+        this.setState({ data: newComments })
         //add POST request
+        axios.post(this.state.url, comment)
+            .then(res => this.loadCommentsFromServer())
+            .catch(err => {
+                console.log(err)
+            })
     }
     render() {
         return (
